@@ -32,7 +32,51 @@
   <polaris-chip title="Grants and donations"></polaris-chip>
 
   <h1>my-card</h1>
-  <my-card></my-card>
+  
+
+
+  <h2>Controls</h2>
+  <div class="control-wrapper">
+    <button class="duplicate">Clone Card</button>
+    <button class="title">Change title</button>
+    <button class="img-change">Change image</button>
+    <button id="bg-change">Change background</button>
+    <button id="delete">Delete card</button>
+  </div>
+
+    <div id="cardlist">
+      <my-card ></my-card>
+        <my-card
+          title="Old Main"
+          imgsrc="https://imgs.search.brave.com/0HtzoI4JzqSwIKoSTHV8dIkfPuLx8dhtH6kDR-98z8M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YW1lc3Bob3Rvcy5j/b20vcHN1L2ltYWdl/cy9vbGRfbWFpbl85/LTExLTIwMDZCV190/aG1iLmpwZw"
+          desc="Old Main is the administrative hub of Penn State and one of the most recognizable buildings on campus."
+          link="https://www.psu.edu"
+          bgcolor="#fb542b"
+         ></my-card>
+        <my-card
+          title="Beaver Stadium"
+          imgsrc="https://imgs.search.brave.com/PCoM73_oeRzRDgxLRsn3uZgNL9CED6pOpRHnDWxxUj0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vb253YXJk/c3RhdGUuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDE1LzA5/L0JlYXZlci1zdGFk/aXVtLXByZXNlbnQt/ODcweDU4MC5qcGc_/cmVzaXplPTcwMCw0/NjY"
+          desc="Beaver Stadium is the home of Penn State's football team."
+          link="https://www.psu.edu"
+          bgcolor="#832bfb"
+        ></my-card>
+        <my-card
+          title="Hax PSU"
+          imgsrc="https://imgs.search.brave.com/z3TCqXuFJvPoYeGx2OezE6VcsDl5ReTsw5mNKg3135k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQ5/ODA4ODQ4Ni92ZWN0/b3IvaGFja2VyLW9y/LXBob25lLXNjYW1t/ZXItaW4taG9vZC1o/YWNraW5nLWF0LWNv/bXB1dGVyLWFuZC1t/b2JpbGUtc21hcnRw/aG9uZS1pbi1kYXJr/LXJvb20uanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPWNXdG5l/V3k4YUxmVkQ3TXlt/UGlxanp4UXh2amNN/aG1vcnQ2WFdfWGJ6/ZVU9"
+          desc="Create Portfolios, Resumes, and Personal Websites with Hax PSU"
+          link="https://hax.psu.edu/"
+          bgcolor="#0d29b5"
+        ></my-card>
+        <my-card
+          title="Nittanyville"
+          imgsrc="https://imgs.search.brave.com/Nm4qZdX8udZXbiR970kGNSut4pWFBlmCCvhjcnPJ238/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vaW1hZ2Vz/Lm9ud2FyZHN0YXRl/LmNvbS91cGxvYWRz/LzIwMTEvMDgvODEz/MV8xNjMzMDU1NjMy/OTVfNjc3OTM4Mjk1/XzM2MDQ2MTlfMzI2/ODY5X24uanBnP2Zp/dD02MDQsNDUzJnNz/bD0x"
+          desc="Penn State student fan club that gathers to tailgate before football games."
+          link="https://www.instagram.com/nittanyvillepsu/"
+          bgcolor="#179342"
+        ></my-card>
+
+
+    </div>
 
   <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>
