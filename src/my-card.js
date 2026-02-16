@@ -34,83 +34,94 @@ class MyCard extends LitElement {
     this.fancy = false; 
   }
 
-  static get styles() {
-    return css`
-      :host([fancy]) {
-        display: block;
-        background-color: pink;
-        border: 2px solid fuchsia;
-        box-shadow: 10px 5px 5px red;
-      }
+static get styles() {
+  return css`
+    :host([fancy]) {
+      display: block;
+      background-color: pink;
+      border: 2px solid fuchsia;
+      box-shadow: 10px 5px 5px red;
+    }
 
+    .card {
+      height: 420px;
+      width: 400px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin: 16px;
+      padding: 16px;
+      box-sizing: border-box;
+      display: inline-block;
+      vertical-align: top;
+      overflow: hidden;
+      background-clip: padding-box;
+    }
+
+    .card_img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      border-radius: 8px;
+      margin: 0 0 12px;
+    }
+
+    .card_body {
+      display: flex;
+      flex-direction: column;
+      padding: 16px 0 0;
+      min-height: 0;
+    }
+
+    .card_title {
+      margin: 0 0 8px;
+      font-size: 20px;
+      text-decoration: underline;
+    }
+
+    .card_desc {
+      margin: 0 0 12px;
+      font-size: 14px;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card_button {
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background-color: #ffffff;
+      color: #000000;
+      border: 2px solid #000000;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: auto;
+    }
+
+    @media (max-width: 500px) {
       .card {
-        height: 420px;
-        width: 400px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        margin: 16px;
-        padding: 16px;
-        box-sizing: border-box;
-        display: inline-block;
+        max-width: 92%;
+        padding: 12px;
+        margin: 12px auto;
+        display: block;
       }
 
       .card_img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        display: block;
-        border-radius: 8px;
-        margin: 0 0 12px;
-      }
-
-      .card_body {
-        padding: 8px 0;
+        height: 160px;
       }
 
       .card_title {
-        margin: 0 0 8px;
-        font-size: 20px;
-        text-decoration: underline;
+        font-size: 18px;
       }
 
       .card_desc {
-        margin: 0 0 12px;
-        font-size: 14px;
-        line-height: 1.4;
+        font-size: 13px;
       }
+    }
+  `;
+}
 
-      .card_button {
-        text-decoration: none;
-        padding: 8px 12px;
-        border-radius: 6px;
-        background-color: #ffffff;
-        color: #000000;
-        border: 2px solid #000000;
-        font-weight: 600;
-        display: inline-block;
-      }
-
-      @media (max-width: 500px) {
-        .card {
-          max-width: 92%;
-          padding: 12px;
-          margin: 12px auto;
-        }
-
-        .card_img {
-          height: 160px;
-        }
-
-        .card_title {
-          font-size: 18px;
-        }
-
-        .card_desc {
-          font-size: 13px;
-        }
-      }
-    `;
-  }
 
   openChanged(e) {
     this.fancy = e.target.open;
