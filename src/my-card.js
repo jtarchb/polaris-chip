@@ -2,11 +2,11 @@ import { LitElement, html, css } from 'lit';
 
 /**
  * Now it's your turn. Here's what we need to try and do:
- * 1. Get you HTML from your card working in here 
+ * 1. Get you HTML from your card working in here
  * 2. Get your CSS rescoped as needed to work here
  */
 
- class MyCard extends LitElement {
+class MyCard extends LitElement {
   static get tag() {
     return 'my-card';
   }
@@ -17,7 +17,8 @@ import { LitElement, html, css } from 'lit';
       imgSrc: { type: String, attribute: 'imgsrc' },
       desc: { type: String },
       link: { type: String },
-      bgcolor: { type: String }
+      bgcolor: { type: String },
+      fancy: { type: Boolean, reflect: true },
     };
   }
 
@@ -29,23 +30,27 @@ import { LitElement, html, css } from 'lit';
       'The shrine is a gift of the class of 1940 and rests in a natural setting of trees near Recreation Building. Animalier Heinz Warneke and stonecutter Joseph Garatti created it from a 13-ton block of Indiana limestone.';
     this.link = 'https://hax.psu.edu';
     this.bgcolor = '#ffffff';
+    this.fancy = false; 
   }
 
   static get styles() {
     return css`
-      :host {
+      :host([fancy]) {
         display: block;
-        font-family: Arial, sans-serif;
+        background-color: pink;
+        border: 2px solid fuchsia;
+        box-shadow: 10px 5px 5px red;
       }
 
       .card {
-        max-width: 400px;
+        height: 420px;
+        width: 400px;
         border: 1px solid #ccc;
         border-radius: 8px;
-        margin: 16px auto;
+        margin: 16px;
         padding: 16px;
         box-sizing: border-box;
-        
+        display: inline-block;
       }
 
       .card_img {
@@ -64,6 +69,7 @@ import { LitElement, html, css } from 'lit';
       .card_title {
         margin: 0 0 8px;
         font-size: 20px;
+        text-decoration: underline;
       }
 
       .card_desc {
@@ -75,9 +81,11 @@ import { LitElement, html, css } from 'lit';
       .card_button {
         text-decoration: none;
         padding: 8px 12px;
-        border: 1px solid #333;
         border-radius: 6px;
-        color: #333;
+        background-color: #ffffff;
+        color: #000000;
+        border: 2px solid #000000;
+        font-weight: 600;
         display: inline-block;
       }
 
@@ -103,6 +111,19 @@ import { LitElement, html, css } from 'lit';
     `;
   }
 
+  openChanged(e) {
+    this.fancy = e.target.open;
+  }
+
+  updated(changedProps) {
+    if (changedProps.has('fancy')) {
+      const details = this.renderRoot?.querySelector('details');
+      if (details && details.open !== this.fancy) {
+        details.open = this.fancy; 
+      }
+    }
+  }
+
   render() {
     return html`
       <section class="card" style="background:${this.bgcolor}">
@@ -111,7 +132,16 @@ import { LitElement, html, css } from 'lit';
         <div class="card_body">
           <h2 class="card_title">${this.title}</h2>
 
-          <p class="card_desc">${this.desc}</p>
+          <details
+            ?open=${this.fancy}
+            class="card_desc"
+            @toggle=${this.openChanged}
+          >
+            <summary>Description</summary>
+            <div>
+              <slot>${this.desc}</slot>
+            </div>
+          </details>
 
           <a class="card_button" href="${this.link}" target="_blank" rel="noopener">
             Details
